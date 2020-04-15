@@ -1,36 +1,36 @@
 let readline = require("readline-sync");
 
-function substract(num1, num2) {
+const substract = (num1, num2) => {
   return num1 - num2;
-}
+};
 
-function add(num1, num2) {
+const add = (num1, num2) => {
   return num1 + num2;
-}
+};
 
-function divide(num1, num2) {
+const divide = (num1, num2) => {
   return num1 / num2;
-}
+};
 
-function multiply(num1, num2) {
+const multiply = (num1, num2) => {
   return num1 * num2;
-}
+};
 
-function modulas(num1, num2) {
+const modulas = (num1, num2) => {
   return num1 % num2;
-}
+};
 
-function greaterthan(num1, num2) {
+const greaterthan = (num1, num2) => {
   return num1 > num2;
-}
+};
 
-function lessthan(num1, num2) {
+const lessthan = (num1, num2) => {
   return num1 < num2;
-}
+};
 
-function isEqual(num1, num2) {
+const isEqual = (num1, num2) => {
   return num1 === num2;
-}
+};
 
 let number1 = parseInt(readline.question("enter first Number :"));
 let number2 = parseInt(readline.question("Enter second Number :"));
