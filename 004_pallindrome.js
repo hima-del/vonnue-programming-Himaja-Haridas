@@ -1,5 +1,5 @@
-function pallindrome(strentry) {
-  var Str = strentry.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "");
+const pallindrome = (strentry) => {
+  let str = strentry.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "");
   let count = 0;
   if (Str.length % 2 == 0) {
     count = Str.length / 2;
@@ -15,5 +15,5 @@ function pallindrome(strentry) {
     console.log("pallindrome");
     return true;
   }
-}
+};
 pallindrome("himaja");
