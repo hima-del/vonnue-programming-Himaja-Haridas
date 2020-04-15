@@ -1,6 +1,6 @@
 let readline = require("readline-sync");
 let number = readline.question("enter the Number :");
-function powerOfThree(num) {
+const powerOfThree = (num) => {
   for (let i = 0; i < num; i++) {
     if (i * i * i == num) {
       return true;
@@ -8,5 +8,5 @@ function powerOfThree(num) {
       return false;
     }
   }
-}
+};
 console.log(powerOfThree(number));
