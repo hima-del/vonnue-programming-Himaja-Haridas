@@ -1,17 +1,17 @@
 let readline = require("readline-sync");
 const sum1ton = (n) => {
-  let total1 = 0;
+  let total = 0;
   for (let i = 1; i <= n; i++) {
-    total1 += i;
+    total += i;
   }
-  return total1;
+  return total;
 };
 const product1ton = (n) => {
-  let total2 = 1;
+  let total = 1;
   for (let i = 1; i <= n; i++) {
-    total2 *= i;
+    total *= i;
   }
-  return total2;
+  return total;
 };
 let number1 = parseInt(readline.question("enter the Number :"));
 let option = readline.question(
