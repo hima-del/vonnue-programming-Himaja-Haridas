@@ -1,10 +1,10 @@
 const prime = (n) => {
   for (let x = 2; x < n; x++) {
-    if (n % x == 0) {
+    if (n % x === 0) {
       return false;
     }
     return true;
   }
 };
 
-console.log(prime(100));
+console.log(prime(17));
