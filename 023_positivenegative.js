@@ -6,5 +6,5 @@ const checkPositive = (n) => {
     return false;
   }
 };
-let Number = parseInt(readline.question("enter the Number :"));
-console.log(checkPositive(Number));
+let number = parseInt(readline.question("enter the Number :"));
+console.log(checkPositive(number));
