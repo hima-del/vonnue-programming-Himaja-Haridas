@@ -2,17 +2,18 @@ let array = [];
 const amstrongRange = (arr) => {
   let max = Math.max(arr[0], arr[1]);
   let min = Math.min(arr[0], arr[1]);
-  let sum = 0;
   for (let i = min; i <= max; i++) {
-    while (max > 0) {
-      let rem = max % 10;
+    let sum = 0;
+    let num = i;
+    while (num > 0) {
+      let rem = num % 10;
       sum = sum + rem * rem * rem;
-      max = Math.floor(max / 10);
+      num = Math.floor(num / 10);
     }
-    if (sum === max) {
-      array.push(max);
+    if (sum === i) {
+      array.push(i);
     }
   }
   return array;
 };
-console.log(amstrongRange([1, 200]));
+console.log(amstrongRange([1, 500]));
