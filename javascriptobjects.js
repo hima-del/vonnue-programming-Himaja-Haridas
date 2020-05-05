@@ -76,7 +76,7 @@ let classDetails = {
   ],
 };
 // to add a student
-const addStudent = (array, name, id) => {
+const addStudent = (studentArray, name, id) => {
   let marks = [];
   let add = {
     name,
@@ -84,7 +84,7 @@ const addStudent = (array, name, id) => {
     marks,
   };
   array.push(add);
-  return array;
+  return studentArray;
 };
 
 // change class teacher
@@ -96,18 +96,48 @@ const changeTeacher = (inputClassName, inputTeacherName) => {
 };
 
 // delete student
-const deleteStudent = (array, inputId) => {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].id === inputId) {
-      array.splice(i, 1);
+const deleteStudent = (studentArray, inputId) => {
+  for (let i = 0; i < studentAarray.length; i++) {
+    if (studentAarray[i].id === inputId) {
+      studentArray.splice(i, 1);
     }
     return classDetails;
   }
 };
 
+// enter mark for a student
+const enterMarkOfStudent = (studentArray, inputId, subject, mark) => {
+  marks = { subject, mark };
+  for (let i = 0; i < studentArray.length; i++) {
+    if (studentArray.id === inputId) {
+      for (let j = 0; j < studentArray.marks.length; j++) {
+        if (studentAarray[i].marks[j].subject === subject) {
+          studentArray[i].marks[j].mark = mark;
+        }
+      }
+    }
+  }
+  return studentArray;
+};
+// delete subject
+const deleteSubject = (studentArray, id, subject) => {
+  for (let i = 0; i < studentAarray.length; i++) {
+    if (studentArray.id === id) {
+      for (let j = 0; j < studentArray.marks.length; j++) {
+        if (studentArray[i].marks[j].subject === subject) {
+          studentAarray[i].marks.splice(j, 1);
+        }
+      }
+    }
+    console.log(studentArray[i]);
+  }
+  return studentArray;
+};
 console.log("enter 1 to add new student");
 console.log("enter 2 to change teacher name");
 console.log("enter 3 to delete a astudent");
+console.log("enter 4 to add mark of a student");
+console.log("enter 5 to delete subject");
 let response = parseInt(readline.question("Enter your Response: "));
 if (response === 1) {
   let name = readline.question("enter new student name :");
@@ -122,4 +152,15 @@ if (response === 2) {
 if (response === 3) {
   let id = parseInt(readline.question("enter ID of the student :"));
   console.log(deleteStudent(classDetails.students, id));
+}
+if (response === 4) {
+  let id = parseInt(readline.question("enter ID of the student :"));
+  let subject = parseInt(readline.question("enter the subject :"));
+  let mark = parseInt(readline.question("enter the mark :"));
+  console.log(enterMarkOfStudent(classDetails.students, id, subject, mark));
+}
+if (response === 5) {
+  let id = parseInt(readline.question("enter ID of the student :"));
+  let subject = parseInt(readline.question("enter the subject :"));
+  console.log(deleteSubject(classDetails.students, id, subject));
 }
