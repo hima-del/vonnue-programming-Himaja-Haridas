@@ -76,6 +76,7 @@ let classDetails = {
   ],
 };
 // to add a student
+
 const addStudent = (studentArray, name, id) => {
   let marks = [];
   let add = {
@@ -88,6 +89,7 @@ const addStudent = (studentArray, name, id) => {
 };
 
 // change class teacher
+
 const changeTeacher = (inputClassName, inputTeacherName) => {
   if (inputClassName === classDetails.name) {
     classDetails.teacherName = inputTeacherName;
@@ -96,6 +98,7 @@ const changeTeacher = (inputClassName, inputTeacherName) => {
 };
 
 // delete student
+
 const deleteStudent = (studentArray, inputId) => {
   for (let i = 0; i < studentAarray.length; i++) {
     if (studentAarray[i].id === inputId) {
@@ -106,6 +109,7 @@ const deleteStudent = (studentArray, inputId) => {
 };
 
 // enter mark for a student
+
 const enterMarkOfStudent = (studentArray, inputId, subject, mark) => {
   marks = { subject, mark };
   for (let i = 0; i < studentArray.length; i++) {
@@ -119,7 +123,9 @@ const enterMarkOfStudent = (studentArray, inputId, subject, mark) => {
   }
   return studentArray;
 };
+
 // delete subject
+
 const deleteSubject = (studentArray, id, subject) => {
   for (let i = 0; i < studentAarray.length; i++) {
     if (studentArray.id === id) {
@@ -133,12 +139,69 @@ const deleteSubject = (studentArray, id, subject) => {
   }
   return studentArray;
 };
+
+// topper of a class
+
+const topperOfClass = (subject) => {
+  let index = 0;
+  let topperMark = classDetails.students[0].marks[subject];
+  for (let i = 1; i < classDetails.students.length; i++) {
+    if (classDetails.students[i].marks[subject] > topperMark) {
+      topperMark = classDetails.students[i].marks[subject];
+      index = i;
+    }
+  }
+  return classDetails.students[index];
+};
+
+// average mark of a subject
+
+const averageMark = (subject) => {
+  let sum = 0;
+  for (let i = 1; i < classDetails.students.length; i++) {
+    sum = sum + classDetails.students[i].marks[subject];
+  }
+  return sum / classDetails.students.length;
+};
+
+// edit mark of a student
+
+const editMarkOfStudent = (id, subject, inputMark) => {
+  for (let i = 0; i < classDetails.students.length; i++) {
+    if (classDetails.students[i].id === id) {
+      classDetails.students[i].marks[subject] = inputMark;
+    }
+  }
+  return classDetails;
+};
+
+// sort and display a list of students
+
+const sortStudents = () => {
+  for (let i = 0; i < classDetails.students.length - 1; i++) {
+    for (let j = i + 1; j < classDetails.students.length; j++) {
+      if (classDetails.students[i].name > classDetails.students[j].name) {
+        let temp = classDetails.students[i];
+        classDetails.students[i] = classDetails.students[j];
+        classDetails.students[j] = temp;
+      }
+    }
+  }
+  return classDetails.students;
+};
+
 console.log("enter 1 to add new student");
 console.log("enter 2 to change teacher name");
-console.log("enter 3 to delete a astudent");
+console.log("enter 3 to delete a a student");
 console.log("enter 4 to add mark of a student");
 console.log("enter 5 to delete subject");
+console.log("enter 6 to get topper of a class");
+console.log("enter 7 to get average mark");
+console.log("enter 8 to edit mark of a student");
+console.log("enter 9 to sort a list of students");
+
 let response = parseInt(readline.question("Enter your Response: "));
+
 if (response === 1) {
   let name = readline.question("enter new student name :");
   let id = parseInt(readline.question("enter ID of the student :"));
@@ -163,4 +226,21 @@ if (response === 5) {
   let id = parseInt(readline.question("enter ID of the student :"));
   let subject = parseInt(readline.question("enter the subject :"));
   console.log(deleteSubject(classDetails.students, id, subject));
+}
+if (response === 6) {
+  let subject = parseInt(readline.question("enter the subject :"));
+  console.log(topperOfClass(subject));
+}
+if (response === 7) {
+  let subject = parseInt(readline.question("enter the subject :"));
+  console.log(averageMark(subject));
+}
+if (response === 8) {
+  let id = parseInt(readline.question("enter ID of the student :"));
+  let subject = parseInt(readline.question("enter the subject :"));
+  let mark = parseInt(readline.question("enter the new mark :"));
+  console.log(editMarkOfStudent(id, subject, mark));
+}
+if (response === 9) {
+  console.log(sortStudents());
 }
