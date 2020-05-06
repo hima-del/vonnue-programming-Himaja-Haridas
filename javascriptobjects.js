@@ -190,6 +190,17 @@ const sortStudents = () => {
   return classDetails.students;
 };
 
+// enter mark for multiple students
+const enterMarkForMultipleStudents = (studentArray, subject) => {
+  for (let i = 0; i < studentArray.length; i++) {
+    let mark = readline.question(
+      "enter " + studentArray[i].name + "'s  mark of " + subject + " : "
+    );
+    enterMarkOfStudent(studentArray, studentArray[i].id, subject, mark);
+    console.log(studentArray[i].marks);
+  }
+};
+
 console.log("enter 1 to add new student");
 console.log("enter 2 to change teacher name");
 console.log("enter 3 to delete a a student");
@@ -199,6 +210,7 @@ console.log("enter 6 to get topper of a class");
 console.log("enter 7 to get average mark");
 console.log("enter 8 to edit mark of a student");
 console.log("enter 9 to sort a list of students");
+console.log("enter 10 to add mark of multiple students");
 
 let response = parseInt(readline.question("Enter your Response: "));
 
@@ -243,4 +255,8 @@ if (response === 8) {
 }
 if (response === 9) {
   console.log(sortStudents());
+}
+if (response === 10) {
+  let subject = readline.question("enter the subject :");
+  console.log(enterMark4Students(classDetails.students, subject));
 }
